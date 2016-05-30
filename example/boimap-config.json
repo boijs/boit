@@ -1,0 +1,6 @@
+{
+    "map": [{
+        "mapfile": "boimap.json",
+        "targets": ["./views/index.a.html","./views/index.b.html"]
+        }]
+}
