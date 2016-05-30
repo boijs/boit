@@ -1,6 +1,4 @@
 {
-    "map": [{
-        "mapfile": "boimap.json",
-        "targets": ["./views/index.a.html","./views/index.b.html"]
-        }]
+    "mapfile": "http://localhost:8888/libs/boi-map.json",
+    "targets": ["./views/index.a.html","./views/index.b.html"]
 }

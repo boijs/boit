@@ -6,8 +6,9 @@ let fs = require('fs');
 let path = require('path');
 let http = require('http');
 let Promise = require('bluebird');
-
 let program = require('commander');
+
+let htmlReplaceUrl = require('./libs/html-replaceurl');
 
 let boit = {};
 
