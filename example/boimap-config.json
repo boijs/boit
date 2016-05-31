@@ -1,4 +1,4 @@
 {
-    "mapfile": "http://localhost:8888/libs/boi-map.json",
+    "mapfile": "http://dj.58cdn.com.cn/test/boi-map.json",
     "targets": ["./views/index.a.html","./views/index.b.html"]
 }
