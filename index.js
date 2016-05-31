@@ -4,8 +4,6 @@
 
 let fs = require('fs');
 let path = require('path');
-let http = require('http');
-let Promise = require('bluebird');
 let program = require('commander');
 
 let htmlReplaceUrl = require('./libs/html-replaceurl');
@@ -23,11 +21,17 @@ let info = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf
 program.version(info.version);
 program.usage('<cmd> [option]');
 
-program.command('update html')
-    .alias('uh')
+program.command('update [mode]')
+    .alias('up')
     .description('update static file urls in specific html')
-    .action(function(){
-        htmlReplaceUrl();
+    .action(function(mode) {
+        switch (mode) {
+            case 'html':
+                htmlReplaceUrl();
+                break;
+            default:
+                break;
+        }
     });
 
 program.parse(process.argv);

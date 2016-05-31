@@ -35,21 +35,24 @@ function replaceUrl(mapping,htmls){
     });
 
     htmls.map(function(html){
+        let _path = path.resolve(process.cwd(),html);
         Promise.try(()=>{
-            return fs.readFileSync(path.resolve(process.cwd(),html));
+            return fs.readFileSync(_path);
         }).then((content)=>{
             let _content = content.toString();
             arr_js.map((js)=>{
-                _content = _content.replace(js.regDel,'');
-                _content = _content.replace(js.regRep,js.target);
+                if(js.regRep.test(_content)){
+                    _content = _content.replace(js.regDel,js.target);
+                }
             });
             arr_style.map((style)=>{
-                _content = _content.replace(style.regDel,'');
-                _content = _content.replace(style.regRep,style.target);
+                if(style.regRep.test(_content)){
+                    _content = _content.replace(style.regDel,style.target);
+                }
             });
             return _content;
         }).then((content)=>{
-            return fs.writeFileSync(path.resolve(process.cwd(),'../',html));
+            return fs.writeFileSync(_path,content);
         }).catch((err) => {
             throw err;
         })
